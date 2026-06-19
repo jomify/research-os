@@ -1,0 +1,280 @@
+- generic [ref=e2]:
+  - complementary "Primary navigation" [ref=e3]:
+    - generic [ref=e5]:
+      - strong [ref=e6]: Research OS
+      - generic [ref=e7]: 研究作戦室
+    - navigation [ref=e8]:
+      - button "Workbench 作業台" [ref=e9] [cursor=pointer]:
+        - generic [ref=e11]:
+          - text: Workbench
+          - generic [ref=e12]: 作業台
+      - button "Intake 取り込み" [ref=e13] [cursor=pointer]:
+        - generic [ref=e15]:
+          - text: Intake
+          - generic [ref=e16]: 取り込み
+      - button "Evidence 証拠" [ref=e17] [cursor=pointer]:
+        - generic [ref=e19]:
+          - text: Evidence
+          - generic [ref=e20]: 証拠
+      - button "Ideas 発想" [ref=e21] [cursor=pointer]:
+        - generic [ref=e23]:
+          - text: Ideas
+          - generic [ref=e24]: 発想
+      - button "Branches 枝分かれ" [ref=e25] [cursor=pointer]:
+        - generic [ref=e27]:
+          - text: Branches
+          - generic [ref=e28]: 枝分かれ
+      - button "Cluster 連携" [ref=e29] [cursor=pointer]:
+        - generic [ref=e31]:
+          - text: Cluster
+          - generic [ref=e32]: 連携
+  - main [ref=e33]:
+    - generic [ref=e34]:
+      - searchbox [ref=e37]
+      - generic [ref=e38]:
+        - button "New Intake" [ref=e39] [cursor=pointer]
+        - button "Run Pipeline" [ref=e40] [cursor=pointer]
+        - button "Toggle compact density" [ref=e41] [cursor=pointer]: ▦
+        - button "Toggle night ink mode" [ref=e42] [cursor=pointer]: 月
+    - region "Research workflow" [ref=e43]:
+      - article [ref=e44]:
+        - generic [ref=e45]:
+          - heading "Intake" [level=2] [ref=e46]
+          - generic [ref=e47]: "24"
+        - paragraph [ref=e48]: Research briefs and prompts
+        - list [ref=e49]:
+          - listitem [ref=e50]: Papers 14
+          - listitem [ref=e51]: Notes 6
+          - listitem [ref=e52]: Reports 2
+      - article [ref=e53]:
+        - generic [ref=e54]:
+          - heading "Evidence" [level=2] [ref=e55]
+          - generic [ref=e56]: "128"
+        - paragraph [ref=e57]: Claims, datasets, code
+        - list [ref=e58]:
+          - listitem [ref=e59]: Extracted claims 74
+          - listitem [ref=e60]: Datasets 18
+          - listitem [ref=e61]: Methods 12
+      - article [ref=e62]:
+        - generic [ref=e63]:
+          - heading "Bundle" [level=2] [ref=e64]
+          - generic [ref=e65]: "36"
+        - paragraph [ref=e66]: Execution-ready paper packs
+        - list [ref=e67]:
+          - listitem [ref=e68]: Evidence bundles 22
+          - listitem [ref=e69]: Thematic packs 10
+          - listitem [ref=e70]: Contradictions 4
+      - article [ref=e71]:
+        - generic [ref=e72]:
+          - heading "Cross Ideas" [level=2] [ref=e73]
+          - generic [ref=e74]: "68"
+        - paragraph [ref=e75]: Paper atoms and graph synthesis
+        - list [ref=e76]:
+          - listitem [ref=e77]: Raw crosses 48
+          - listitem [ref=e78]: Emerging themes 15
+          - listitem [ref=e79]: Hypotheses 5
+      - article [ref=e80]:
+        - generic [ref=e81]:
+          - heading "Idea Review" [level=2] [ref=e82]
+          - generic [ref=e83]: "27"
+        - paragraph [ref=e84]: Claude Code critique gates
+        - list [ref=e85]:
+          - listitem [ref=e86]: Under review 9
+          - listitem [ref=e87]: Needs work 6
+          - listitem [ref=e88]: Promising 12
+      - article [ref=e89]:
+        - generic [ref=e90]:
+          - heading "Branches" [level=2] [ref=e91]
+          - generic [ref=e92]: "41"
+        - paragraph [ref=e93]: Executable experiment candidates
+        - list [ref=e94]:
+          - listitem [ref=e95]: Active branches 28
+          - listitem [ref=e96]: Dormant 9
+          - listitem [ref=e97]: Merged 4
+      - article [ref=e98]:
+        - generic [ref=e99]:
+          - heading "Cluster" [level=2] [ref=e100]
+          - generic [ref=e101]: "8"
+        - paragraph [ref=e102]: Agent sessions and dispatches
+        - list [ref=e103]:
+          - listitem [ref=e104]: Sessions 8
+          - listitem [ref=e105]: Completed 3
+          - listitem [ref=e106]: Archived 5
+    - generic [ref=e107]:
+      - article [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - heading "Idea Graph 発想グラフ" [level=2] [ref=e111]
+            - paragraph [ref=e112]: Paper sections → idea atoms → reviewed branches
+          - generic [ref=e113]:
+            - button "All" [ref=e114] [cursor=pointer]
+            - button "Passed" [ref=e115] [cursor=pointer]
+        - img "Cross paper idea graph" [ref=e116]
+        - generic [ref=e134]:
+          - generic [ref=e135]: Seed Idea
+          - generic [ref=e137]: AI
+          - generic [ref=e139]: Math
+          - generic [ref=e141]: Neuro
+          - generic [ref=e143]: Supporting
+      - article [ref=e145]:
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - heading "Branch Ranking 枝ランキング" [level=2] [ref=e148]
+            - paragraph [ref=e149]: Reviewed ideas converted into experiment branches
+          - combobox "Sort branches" [ref=e150]:
+            - option "Score" [selected]
+            - option "Traction"
+            - option "Recent"
+        - table [ref=e151]:
+          - rowgroup [ref=e152]:
+            - row "Rank Branch Idea Score Traction Last" [ref=e153]:
+              - columnheader "Rank" [ref=e154]
+              - columnheader "Branch" [ref=e155]
+              - columnheader "Idea" [ref=e156]
+              - columnheader "Score" [ref=e157]
+              - columnheader "Traction" [ref=e158]
+              - columnheader "Last" [ref=e159]
+          - rowgroup [ref=e160]:
+            - row "1 Neuro-Symbolic Workspace I-042 0.87 High 18m" [ref=e161]:
+              - cell "1" [ref=e162]:
+                - generic [ref=e163]: "1"
+              - cell "Neuro-Symbolic Workspace" [ref=e164]:
+                - strong [ref=e165]: Neuro-Symbolic Workspace
+              - cell "I-042" [ref=e166]
+              - cell "0.87" [ref=e167]: "0.87"
+              - cell "High" [ref=e170]:
+                - generic [ref=e171]: High
+              - cell "18m" [ref=e172]
+            - row "2 Latent Memory Compression I-031 0.81 High 1h" [ref=e173]:
+              - cell "2" [ref=e174]:
+                - generic [ref=e175]: "2"
+              - cell "Latent Memory Compression" [ref=e176]:
+                - strong [ref=e177]: Latent Memory Compression
+              - cell "I-031" [ref=e178]
+              - cell "0.81" [ref=e179]: "0.81"
+              - cell "High" [ref=e182]:
+                - generic [ref=e183]: High
+              - cell "1h" [ref=e184]
+            - row "3 Generative Proof Hints I-028 0.76 Medium 3h" [ref=e185]:
+              - cell "3" [ref=e186]:
+                - generic [ref=e187]: "3"
+              - cell "Generative Proof Hints" [ref=e188]:
+                - strong [ref=e189]: Generative Proof Hints
+              - cell "I-028" [ref=e190]
+              - cell "0.76" [ref=e191]: "0.76"
+              - cell "Medium" [ref=e194]:
+                - generic [ref=e195]: Medium
+              - cell "3h" [ref=e196]
+            - row "4 Causal World Models for RL I-015 0.71 Medium 5h" [ref=e197]:
+              - cell "4" [ref=e198]:
+                - generic [ref=e199]: "4"
+              - cell "Causal World Models for RL" [ref=e200]:
+                - strong [ref=e201]: Causal World Models for RL
+              - cell "I-015" [ref=e202]
+              - cell "0.71" [ref=e203]: "0.71"
+              - cell "Medium" [ref=e206]:
+                - generic [ref=e207]: Medium
+              - cell "5h" [ref=e208]
+            - row "5 Adaptive Attention Routing I-009 0.64 Medium 1d" [ref=e209]:
+              - cell "5" [ref=e210]:
+                - generic [ref=e211]: "5"
+              - cell "Adaptive Attention Routing" [ref=e212]:
+                - strong [ref=e213]: Adaptive Attention Routing
+              - cell "I-009" [ref=e214]
+              - cell "0.64" [ref=e215]: "0.64"
+              - cell "Medium" [ref=e218]:
+                - generic [ref=e219]: Medium
+              - cell "1d" [ref=e220]
+            - row "6 Neural Theorem Prover I-023 0.58 Low 1d" [ref=e221]:
+              - cell "6" [ref=e222]:
+                - generic [ref=e223]: "6"
+              - cell "Neural Theorem Prover" [ref=e224]:
+                - strong [ref=e225]: Neural Theorem Prover
+              - cell "I-023" [ref=e226]
+              - cell "0.58" [ref=e227]: "0.58"
+              - cell "Low" [ref=e230]:
+                - generic [ref=e231]: Low
+              - cell "1d" [ref=e232]
+            - row "7 Spiking Diffusion Models I-017 0.53 Low 2d" [ref=e233]:
+              - cell "7" [ref=e234]:
+                - generic [ref=e235]: "7"
+              - cell "Spiking Diffusion Models" [ref=e236]:
+                - strong [ref=e237]: Spiking Diffusion Models
+              - cell "I-017" [ref=e238]
+              - cell "0.53" [ref=e239]: "0.53"
+              - cell "Low" [ref=e242]:
+                - generic [ref=e243]: Low
+              - cell "2d" [ref=e244]
+      - article [ref=e245]:
+        - generic [ref=e247]:
+          - heading "Cluster Sessions クラスタ—セッション" [level=2] [ref=e248]
+          - paragraph [ref=e249]: Codex proposes, Claude reviews, runners execute
+        - generic [ref=e250]:
+          - generic [ref=e251]:
+            - strong [ref=e252]: CL-2026-06-19-A
+            - generic [ref=e253]: Memory + Reasoning + Compression
+            - generic [ref=e254]: 12 ideas
+            - generic [ref=e257]: Active
+          - generic [ref=e258]:
+            - strong [ref=e259]: CL-2026-06-19-B
+            - generic [ref=e260]: Neuro-Symbolic Learning
+            - generic [ref=e261]: 9 ideas
+            - generic [ref=e264]: Active
+          - generic [ref=e265]:
+            - strong [ref=e266]: CL-2026-06-18-C
+            - generic [ref=e267]: Causal World Models
+            - generic [ref=e268]: 11 ideas
+            - generic [ref=e271]: Active
+          - generic [ref=e272]:
+            - strong [ref=e273]: CL-2026-06-17-D
+            - generic [ref=e274]: Attention + Dynamics
+            - generic [ref=e275]: 8 ideas
+            - generic [ref=e278]: Completed
+  - complementary [ref=e279]:
+    - generic [ref=e280]:
+      - heading "Idea Inspector" [level=2] [ref=e281]
+      - button "Pin inspector" [ref=e282] [cursor=pointer]: ⌘
+    - article [ref=e283]:
+      - heading "兆 Neuro-Symbolic Workspace" [level=1] [ref=e284]:
+        - generic [ref=e285]: 兆
+        - text: Neuro-Symbolic Workspace
+      - paragraph [ref=e286]: A persistent, differentiable workspace binding symbolic graph structure to neural representations for reasoning and learning.
+      - generic [ref=e287]:
+        - generic [ref=e288]: reasoning
+        - generic [ref=e289]: neuro-symbolic
+        - generic [ref=e290]: workspace
+        - generic [ref=e291]: memory
+    - generic [ref=e292]:
+      - heading "Source Domains ソースドメイン" [level=3] [ref=e293]
+      - generic [ref=e294]:
+        - generic [ref=e295]: AI
+        - meter [ref=e296]
+        - generic [ref=e297]: 76%
+      - generic [ref=e298]:
+        - generic [ref=e299]: Math
+        - meter [ref=e300]
+        - generic [ref=e301]: 58%
+      - generic [ref=e302]:
+        - generic [ref=e303]: Neuro
+        - meter [ref=e304]
+        - generic [ref=e305]: 53%
+    - generic [ref=e306]:
+      - generic [ref=e307]: 審
+      - generic [ref=e308]:
+        - heading "Review Verdict Claude Code" [level=3] [ref=e309]
+        - strong [ref=e310]: PROMISING
+        - paragraph [ref=e311]: Strong cross-domain provenance; feasible prototype if rollout protocol and metric stay fixed.
+      - generic [ref=e312]:
+        - generic [ref=e313]: "0.78"
+        - text: confidence
+    - generic [ref=e314]:
+      - heading "Metadata" [level=3] [ref=e315]
+      - generic [ref=e316]:
+        - term [ref=e317]: Created
+        - definition [ref=e318]: 2026-06-19 15:32
+        - term [ref=e319]: Proposer
+        - definition [ref=e320]: Codex
+        - term [ref=e321]: Reviewer
+        - definition [ref=e322]: Claude Code
+        - term [ref=e323]: Status
+        - definition [ref=e324]: Under Review

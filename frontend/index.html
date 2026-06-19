@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research OS Workbench</title>
+    <link rel="icon" href="./assets/enso.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+          <img src="./assets/enso.svg" alt="" class="brand-mark" />
+          <div>
+            <strong>Research OS</strong>
+            <span>研究作戦室</span>
+          </div>
+        </div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="workbench">
+            <span class="icon grid"></span><span>Workbench <small>作業台</small></span>
+          </button>
+          <button class="nav-item" data-view="intake"><span class="icon doc"></span><span>Intake <small>取り込み</small></span></button>
+          <button class="nav-item" data-view="evidence"><span class="icon lens"></span><span>Evidence <small>証拠</small></span></button>
+          <button class="nav-item" data-view="ideas"><span class="icon spark"></span><span>Ideas <small>発想</small></span></button>
+          <button class="nav-item" data-view="branches"><span class="icon branch"></span><span>Branches <small>枝分かれ</small></span></button>
+          <button class="nav-item" data-view="cluster"><span class="icon nodes"></span><span>Cluster <small>連携</small></span></button>
+        </nav>
+        <div class="storage-card">
+          <div class="pulse-row"><span class="dot live"></span><strong>Local-first</strong><span>synced</span></div>
+          <div class="meter"><span style="width: 67%"></span></div>
+          <p>128.4 GB / 512 GB</p>
+        </div>
+        <img src="./assets/wave.svg" alt="" class="wave" />
+      </aside>
+
+      <main class="workbench">
+        <header class="topbar">
+          <label class="search">
+            <span class="magnifier"></span>
+            <input id="searchInput" type="search" placeholder="Search ideas, evidence, domains, notes..." />
+          </label>
+          <div class="top-actions">
+            <button class="button primary" id="newIntake">New Intake</button>
+            <button class="button" id="runPipeline">Run Pipeline</button>
+            <button class="icon-button" id="toggleDensity" aria-label="Toggle compact density">▦</button>
+            <button class="icon-button" id="toggleTheme" aria-label="Toggle night ink mode">月</button>
+          </div>
+        </header>
+
+        <section class="pipeline-strip" aria-label="Research workflow">
+          <article class="stage" data-stage="Intake">
+            <header><h2>Intake</h2><span>24</span></header>
+            <p>Research briefs and prompts</p>
+            <ul><li>Papers 14</li><li>Notes 6</li><li>Reports 2</li></ul>
+          </article>
+          <article class="stage" data-stage="Evidence">
+            <header><h2>Evidence</h2><span>128</span></header>
+            <p>Claims, datasets, code</p>
+            <ul><li>Extracted claims 74</li><li>Datasets 18</li><li>Methods 12</li></ul>
+          </article>
+          <article class="stage" data-stage="Bundle">
+            <header><h2>Bundle</h2><span>36</span></header>
+            <p>Execution-ready paper packs</p>
+            <ul><li>Evidence bundles 22</li><li>Thematic packs 10</li><li>Contradictions 4</li></ul>
+          </article>
+          <article class="stage accent" data-stage="Cross Ideas">
+            <header><h2>Cross Ideas</h2><span>68</span></header>
+            <p>Paper atoms and graph synthesis</p>
+            <ul><li>Raw crosses 48</li><li>Emerging themes 15</li><li>Hypotheses 5</li></ul>
+          </article>
+          <article class="stage" data-stage="Idea Review">
+            <header><h2>Idea Review</h2><span>27</span></header>
+            <p>Claude Code critique gates</p>
+            <ul><li>Under review 9</li><li>Needs work 6</li><li>Promising 12</li></ul>
+          </article>
+          <article class="stage" data-stage="Branches">
+            <header><h2>Branches</h2><span>41</span></header>
+            <p>Executable experiment candidates</p>
+            <ul><li>Active branches 28</li><li>Dormant 9</li><li>Merged 4</li></ul>
+          </article>
+          <article class="stage" data-stage="Cluster">
+            <header><h2>Cluster</h2><span>8</span></header>
+            <p>Agent sessions and dispatches</p>
+            <ul><li>Sessions 8</li><li>Completed 3</li><li>Archived 5</li></ul>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel graph-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Idea Graph <small>発想グラフ</small></h2>
+                <p>Paper sections → idea atoms → reviewed branches</p>
+              </div>
+              <div class="panel-tools">
+                <button class="mini-button" data-filter="all">All</button>
+                <button class="mini-button" data-filter="passed">Passed</button>
+              </div>
+            </div>
+            <svg class="idea-graph" viewBox="0 0 640 360" role="img" aria-label="Cross paper idea graph">
+              <g class="edges">
+                <path d="M90 190 C 170 80, 278 80, 360 168" />
+                <path d="M90 190 C 190 260, 300 250, 408 206" />
+                <path d="M184 98 C 280 148, 330 132, 438 94" />
+                <path d="M232 284 C 305 215, 390 216, 512 270" />
+                <path d="M360 168 C 430 150, 480 170, 554 132" class="dash" />
+                <path d="M408 206 C 466 220, 500 212, 568 242" />
+              </g>
+              <g class="nodes">
+                <circle cx="90" cy="190" r="31" class="seed" data-idea="0" />
+                <circle cx="184" cy="98" r="17" class="ai" data-idea="1" />
+                <circle cx="232" cy="284" r="15" class="math" data-idea="2" />
+                <circle cx="360" cy="168" r="22" class="neuro" data-idea="0" />
+                <circle cx="408" cy="206" r="16" class="paper" data-idea="3" />
+                <circle cx="438" cy="94" r="13" class="math" data-idea="2" />
+                <circle cx="512" cy="270" r="20" class="paper" data-idea="3" />
+                <circle cx="554" cy="132" r="29" class="ai" data-idea="1" />
+                <circle cx="568" cy="242" r="14" class="neuro" data-idea="0" />
+              </g>
+            </svg>
+            <footer class="legend">
+              <span><i class="seed"></i>Seed Idea</span>
+              <span><i class="ai"></i>AI</span>
+              <span><i class="math"></i>Math</span>
+              <span><i class="neuro"></i>Neuro</span>
+              <span><i class="paper"></i>Supporting</span>
+            </footer>
+          </article>
+
+          <article class="panel ranking-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Branch Ranking <small>枝ランキング</small></h2>
+                <p>Reviewed ideas converted into experiment branches</p>
+              </div>
+              <select id="sortSelect" aria-label="Sort branches">
+                <option value="score">Score</option>
+                <option value="traction">Traction</option>
+                <option value="recent">Recent</option>
+              </select>
+            </div>
+            <table class="branch-table">
+              <thead>
+                <tr><th>Rank</th><th>Branch</th><th>Idea</th><th>Score</th><th>Traction</th><th>Last</th></tr>
+              </thead>
+              <tbody id="branchRows"></tbody>
+            </table>
+          </article>
+
+          <article class="panel sessions-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Cluster Sessions <small>クラスタ—セッション</small></h2>
+                <p>Codex proposes, Claude reviews, runners execute</p>
+              </div>
+            </div>
+            <div class="session-list" id="sessionList"></div>
+          </article>
+        </section>
+      </main>
+
+      <aside class="inspector">
+        <img src="./assets/sakura.svg" alt="" class="sakura" />
+        <div class="inspector-head">
+          <h2>Idea Inspector</h2>
+          <button class="icon-button" id="pinInspector" aria-label="Pin inspector">⌘</button>
+        </div>
+        <article class="selected-idea" id="selectedIdea"></article>
+        <section class="domain-card">
+          <h3>Source Domains <small>ソースドメイン</small></h3>
+          <div class="domain-row"><span>AI</span><meter min="0" max="100" value="76"></meter><b>76%</b></div>
+          <div class="domain-row math"><span>Math</span><meter min="0" max="100" value="58"></meter><b>58%</b></div>
+          <div class="domain-row neuro"><span>Neuro</span><meter min="0" max="100" value="53"></meter><b>53%</b></div>
+        </section>
+        <section class="review-card">
+          <div class="seal">審</div>
+          <div>
+            <h3>Review Verdict <small>Claude Code</small></h3>
+            <strong id="verdictLabel">PROMISING</strong>
+            <p id="verdictText">Cross-domain provenance is clear; keep baseline protocol fixed before execution.</p>
+          </div>
+          <div class="confidence"><span>0.78</span><small>confidence</small></div>
+        </section>
+        <section class="meta-card">
+          <h3>Metadata</h3>
+          <dl>
+            <dt>Created</dt><dd>2026-06-19 15:32</dd>
+            <dt>Proposer</dt><dd>Codex</dd>
+            <dt>Reviewer</dt><dd>Claude Code</dd>
+            <dt>Status</dt><dd><span class="dot warn"></span> Under Review</dd>
+          </dl>
+        </section>
+      </aside>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

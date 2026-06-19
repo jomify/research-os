@@ -9,6 +9,7 @@ goal
   -> intake
   -> evidence ledger
   -> paper bundle
+  -> cross-paper innovation extraction
   -> reproduction plan
   -> baseline run
   -> branch ideation
@@ -22,6 +23,7 @@ goal
 - Converts free-form research prompts into structured local workspace records.
 - Builds evidence ledgers for papers, code repositories, datasets, and benchmark protocols.
 - Creates paper bundles with source claims attached to the research target.
+- Extracts cross-paper idea atoms and synthesizes broad-domain innovation candidates.
 - Produces baseline-first reproduction plans before optimization begins.
 - Generates branch candidates across hyperparameter, training, architecture, data, inference, and paper-transfer ideas.
 - Runs redline audits for metric, dataset, split, script, output, and constraint integrity.
@@ -40,6 +42,8 @@ Included today:
 - Public-source adapters for arXiv, GitHub repository search, and Hugging Face dataset search
 - Runner registry for `local`, `ssh`, and `slurm`
 - Domain registry for `multimodal`, `generative`, and `world_model`
+- Cross-paper innovation extraction across AI, core CS, mathematics, biology/neuroscience, physics, chemistry, medicine, and engineering signals
+- Agent cluster planning and dependency-gated session state for Codex, Claude Code, runner, and verifier work
 - Tests for the core workflow
 
 ## Installation
@@ -76,6 +80,38 @@ Build a paper bundle:
 $bundle = research-os bundle create --from-intake $intake --live
 ```
 
+Extract cross-paper innovation candidates:
+
+```powershell
+$cross = research-os cross-ideas $bundle --top-k 8
+```
+
+Optionally pass local full-text extracts named by evidence id, such as `paper-ai.txt`, to recover
+paper sections and an idea graph:
+
+```powershell
+$cross = research-os cross-ideas $bundle --top-k 8 --fulltext-dir .\paper_texts
+```
+
+Review ideas with a separate model role, for example Codex proposes and Claude Code reviews:
+
+```powershell
+$review = research-os idea-review $cross --proposer codex --reviewer claude_code
+```
+
+Claude Code review can be executed explicitly in plan mode:
+
+```powershell
+$review = research-os idea-review $cross --proposer codex --reviewer claude_code --execute
+```
+
+Convert reviewed ideas into experiment branch candidates:
+
+```powershell
+$branches = research-os ideas-to-branches $review --cross-ideas $cross
+research-os rank $branches
+```
+
 Create a baseline-first reproduction plan:
 
 ```powershell
@@ -101,6 +137,26 @@ Audit the bundle or plan:
 research-os redline audit $plan
 ```
 
+Create a Codex + Claude Code agent cluster plan:
+
+```powershell
+$cluster = research-os cluster plan $plan
+```
+
+Start a dependency-gated cluster session and record agent progress:
+
+```powershell
+$session = research-os cluster start $cluster
+research-os cluster dispatch $session codex-coordinator
+research-os cluster result $session codex-coordinator --status completed --summary "task graph ready"
+```
+
+Dispatch records are written as JSON envelopes. Claude Code dispatch can be executed explicitly:
+
+```powershell
+research-os cluster dispatch $session claude-literature-reviewer --execute
+```
+
 Distill a reusable skill draft:
 
 ```powershell
@@ -116,7 +172,12 @@ workspace/
   intake/          structured research briefs
   evidence/        source ledgers
   bundles/         paper/task bundles
+  cross_ideas/     cross-paper idea atoms and innovation candidates
+  idea_reviews/    independent review records for innovation candidates
   repro_plans/     baseline-first reproduction plans
+  cluster_plans/   Codex, Claude Code, runner, and verifier coordination plans
+  cluster_sessions/ dependency-gated agent acknowledgement and result state
+  cluster_dispatches/ provider-specific prompt and command envelopes
   runs/            baseline run records
   branches/        candidate branch sets
   rankings/        scored branch results
@@ -133,8 +194,10 @@ src/research_os/
   ingest/             prompt parsing and domain hints
   web_research/       arXiv, GitHub, and Hugging Face evidence adapters
   bundle_builder/     brief + evidence -> paper bundle
+  innovation/         cross-paper idea extraction and synthesis
   reproduce/          bundle -> baseline reproduction plan
   execution/          run records and checklist execution
+  orchestration/      agent cluster planning, handoff prompts, and session state
   ideation/           branch generation and ranking
   supervisor/         redline integrity audits
   runner/             local, SSH, and Slurm runner registry
@@ -180,6 +243,9 @@ workspace/intake/<brief-id>.json
 
 - Baseline first: no optimization branch should outrun reproduction.
 - Evidence attached: claims should point back to source records.
+- Cross-domain hypotheses: paper combinations are candidate hypotheses, not validated gains.
+- Full-text provenance: when section text is available, ideas should point through section nodes before becoming candidates.
+- Review before execution: cross-paper ideas should pass independent review before becoming branch candidates.
 - Audit before ranking: gains are not useful if comparison integrity is broken.
 - Local-first state: every major decision becomes a JSON artifact.
 - Adapter-shaped execution: runners can change without rewriting the research workflow.
@@ -188,8 +254,11 @@ workspace/intake/<brief-id>.json
 ## Roadmap
 
 - Add richer source adapters for OpenReview, project pages, benchmark sites, and dataset portals.
+- Add PDF-to-text ingestion and citation-span provenance for cross-paper synthesis.
+- Add automatic patch planning for reviewed branch candidates after baseline recovery.
 - Replace placeholder checklist execution with runner-specific baseline commands.
 - Add real experiment branch execution across local, SSH, and Slurm backends.
+- Add live Codex/Claude Code process launch and result collection behind the cluster session model.
 - Store branch lineage across multiple optimization generations.
 - Expand domain profiles for multimodal, generative, and world-model research.
 - Integrate stronger provenance checks for metrics, datasets, and scripts.
